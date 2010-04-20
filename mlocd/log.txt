@@ -1,0 +1,5 @@
+1. The bagging and boosting in MSCE is different witht
+   those in version6. They don't do data resampling.
+
+2. When apply evaluation on SVm, make sure the config() is process
+   before any other evaluation.
