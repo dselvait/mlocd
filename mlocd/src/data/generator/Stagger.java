@@ -40,13 +40,13 @@ public class Stagger {
 		Concept concept = null;
 		switch(rule_index){
 		case 0: { concept = new Concept(color=Color.RED,shape=null,size=Size.SMALL); 
-		          concept.relation = 1;}
+		          concept.relation = 1; break;}
 		
 		case 1: { concept = new Concept(color=Color.GREEN,shape=Shape.CIRCLE,null); 
-                   concept.relation = 0;}
+                   concept.relation = 0; break;}
 		
 		case 3: { concept = new Concept(color=Color.RED,shape=null,size=Size.MEDIUM); 
-        concept.relation = 0;}
+        concept.relation = 0; break;}
 		}
 		
 		PrintWriter writer = new PrintWriter(new FileOutputStream(location+".data"));
@@ -129,31 +129,40 @@ public class Stagger {
 		Shape[] allShape = Shape.values();
 		Size[] allSize = Size.values();
 		StringBuilder line = new StringBuilder("");
-		if (concept.color != null && concept.relation == 0 && num++ % 2 == 0)
-			line = line.append(concept.color.toString() + this.seperator);
-		else {
-			if (concept.color != null && concept.relation == 1) {
+
+		if (concept.color != null) {
+			if (concept.relation == 1)
 				line = line.append(concept.color.toString() + this.seperator);
-			} else
+			else if (num++ % 2 == 0)
+				line = line.append(concept.color.toString() + this.seperator);
+			else
 				line = line.append(allColor[num % 3].toString()
 						+ this.seperator);
-		}
-		if (concept.shape != null && concept.relation == 0 && num++ % 2 == 0)
-			line = line.append(concept.shape.toString() + this.seperator);
-		else {
-			if (concept.shape != null && concept.relation == 1) {
+		} else
+			line = line.append(allColor[num % 3].toString() + this.seperator);
+
+		if (concept.shape != null) {
+			if (concept.relation == 1)
 				line = line.append(concept.shape.toString() + this.seperator);
-			} else
-				line = line.append(allShape[num % 3].toString()+ this.seperator);
-		}
-		if (concept.size != null && concept.relation == 0 && num++ % 2 == 0)
-			line = line.append(concept.size.toString() + this.seperator);
-		else {
-			if (concept.size != null && concept.relation == 1) {
+			else if (num++ % 2 == 0)
+				line = line.append(concept.shape.toString() + this.seperator);
+			else
+				line = line.append(allShape[num % 3].toString()
+						+ this.seperator);
+		} else
+			line = line.append(allShape[num % 3].toString() + this.seperator);
+
+		if (concept.size != null) {
+			if (concept.relation == 1)
 				line = line.append(concept.size.toString() + this.seperator);
-			} else
-				line = line.append(allSize[num % 3].toString() + this.seperator);
-		}
+			else if (num++ % 2 == 0)
+				line = line.append(concept.size.toString() + this.seperator);
+			else
+				line = line
+						.append(allSize[num % 3].toString() + this.seperator);
+		} else
+			line = line.append(allSize[num % 3].toString() + this.seperator);
+
 		return line.toString();
 	}
 	
@@ -168,6 +177,7 @@ public class Stagger {
 		public Size size = null;
 		// Relation is 1 means the relation is "and", else if is 0 means the relation is "or";
 		public int relation = 1;
+		public Concept(){}
 		public Concept(Color color, Shape shape, Size size){
 			this.color = color; 
 			this.shape = shape;
@@ -175,3 +185,4 @@ public class Stagger {
 		}
 	}
 }
+
