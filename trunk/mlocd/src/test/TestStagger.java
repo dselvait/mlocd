@@ -11,6 +11,7 @@ public class TestStagger {
 		sta.setLocation("sta2");
 		sta.generateData(80);
 		sta.makeNamesFile();
+		Stagger.Concept concept = sta.new Concept();
 		System.out.println("System End");
 	}
 }
