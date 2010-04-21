@@ -37,6 +37,20 @@ public class RandomMachine {
 	          return result;  
 	      }  
 	  
+	      public  double getRandomDouble( double min, double max )  {  
+	          // include min, exclude max  
+	          double result = (int)min + new Double( Math.random() * ( max - min ) ).doubleValue();  
+	        
+	          return result;  
+	      }  
+	      
+	      public float getRandomFloat( double min, double max )  {  
+	          // include min, exclude max  
+	          float result = (int)min + new Double( Math.random() * ( max - min ) ).floatValue();  
+	        
+	          return result;  
+	      }  
+	      
 	      public  String getRandomNormalString( int length ) {  
 	               // include 0-9,a-z,A-Z  
 	               StringBuffer result = new StringBuffer();  

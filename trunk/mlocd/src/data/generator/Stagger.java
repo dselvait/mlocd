@@ -45,7 +45,7 @@ public class Stagger {
 		case 1: { concept = new Concept(color=Color.GREEN,shape=Shape.CIRCLE,null); 
                    concept.relation = 0; break;}
 		
-		case 3: { concept = new Concept(color=Color.RED,shape=null,size=Size.MEDIUM); 
+		case 2: { concept = new Concept(color=Color.RED,shape=null,size=Size.MEDIUM); 
         concept.relation = 0; break;}
 		}
 		
@@ -167,7 +167,7 @@ public class Stagger {
 	}
 	
 	private void error_message(){
-		throw new UnsupportedOperationException("Stagger can't overwrite existing file," +
+		throw new UnsupportedOperationException("Stagger concept can't overwrite existing file," +
 		"use setLocation method to define a new data file.");
 	}
 	
