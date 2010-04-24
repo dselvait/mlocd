@@ -20,7 +20,7 @@ public class TestNaiveWeka {
 //	double acc = Evaluation.accuracy(base+testset, labels);
 //	System.out.println("The accuracy is "+acc);
 //	System.out.println("System End");
-//	
+	
 	classifier.build(base+dataset2);
 	String[] label2 = classifier.classifyData(base+testset2);
 	for(String s:label2)
