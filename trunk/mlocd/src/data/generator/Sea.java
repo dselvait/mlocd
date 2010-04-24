@@ -44,10 +44,10 @@ public class Sea {
 		double rule = 0.0;
 		
 		switch(rule_index){
-		case 0: { rule = 7; break; }
-		case 1: { rule = 8; break; }
-		case 2: { rule = 9; break; }
-		case 3: { rule = 9.5;break; }
+		case 0: { rule = 8; break; }
+		case 1: { rule = 20; break; }
+		case 2: { rule = 38; break; }
+		case 3: { rule = 50;break; }
 		}
 		
 		PrintWriter writer = new PrintWriter(new FileOutputStream(location+".data"));
@@ -68,7 +68,7 @@ public class Sea {
 		    	x3 = rand.getRandomFloat(0, 99);
 		    }
 		    line=line.append(format.format(x1)+seperator+format.format(x2)+seperator+format.format(x3)+seperator);
-		    writer.println(line.toString() + label + ".");
+		    writer.println(line.toString() + label);
 		  }
 		writer.close();
 		}
