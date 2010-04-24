@@ -70,7 +70,7 @@ public class Stagger {
 		    	j = rand.getRandomInt(0, 3);
 		    	line = line.append(allSize[j].toString() + this.seperator);
 		    }
-		    writer.println(line.toString() + label + ".");
+		    writer.println(line.toString() + label);
 		  }
 		writer.close();
 		}
@@ -105,7 +105,7 @@ public class Stagger {
 				j = rand.getRandomInt(0, 3);
 				line = line.append(allSize[j].toString() + this.seperator);
 			}
-			writer.println(line.toString() + label + ".");
+			writer.println(line.toString() + label);
 		}
 		writer.close();
 	}
