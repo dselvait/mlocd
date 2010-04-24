@@ -9,6 +9,7 @@ public class TestSea {
 		String stadata = "sea1";
 		Sea sea = new Sea(base+stadata);
 		sea.generateData(50);
+		sea.makeNamesFile();
 		sea.setLocation("sea2");
 		sea.generateData(80);
 		sea.makeNamesFile();
