@@ -46,8 +46,8 @@ public class Sea {
 		switch(rule_index){
 		case 0: { rule = 8; break; }
 		case 1: { rule = 20; break; }
-		case 2: { rule = 38; break; }
-		case 3: { rule = 50;break; }
+		case 2: { rule = 30; break; }
+		case 3: { rule = 38;break; }
 		}
 		
 		PrintWriter writer = new PrintWriter(new FileOutputStream(location+".data"));
