@@ -6,8 +6,8 @@
 package classifiers;
 import utils.FileWorker;
 import weka.classifiers.trees.*;
-import weka.classifiers.Classifier;
-import weka.classifiers.evaluation.*;
+//import weka.classifiers.Classifier;
+//import weka.classifiers.evaluation.*;
 
 import weka.core.*;
 import weka.core.converters.*;
