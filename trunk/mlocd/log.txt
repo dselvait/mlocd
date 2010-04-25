@@ -3,3 +3,6 @@
 
 2. When apply evaluation on SVm, make sure the config() is process
    before any other evaluation.
+
+3. The preprocessor.AttributeSelection in this projects recommands attribute
+index from 1.
