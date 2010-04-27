@@ -1,16 +1,21 @@
 package data.generator;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
-import java.text.NumberFormat; 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 import utils.RandomMachine;
 
-public class Sea {
+public class Hyperplane {
 
 	public final String attribute_1 = "A1";
 	public final String attribute_2 = "A2";
 	public final String attribute_3 = "A3";
+	public double weight1 = 0.0;
+	public double weight2 = 0.0;
+	public double weight3 = 0.0;
 	public final int positive_label = 1; 
 	public final int nagative_label = 0;
 	
@@ -22,7 +27,7 @@ public class Sea {
 	private String location;
    	private int seed=0; // mod 3 to select the rules;
 	
-	public Sea(String location){
+	public Hyperplane(String location){
 		this.location = location.split("\\.")[0];
 	}
 	
@@ -37,13 +42,13 @@ public class Sea {
 		}
 		
 		int rule_index = seed++ % 4;
-		double rule = 0.0;
+		double rule = 1;
 		
 		switch(rule_index){
-		case 0: { rule = 8; break; }
-		case 1: { rule = 20; break; }
-		case 2: { rule = 30; break; }
-		case 3: { rule = 38;break; }
+		case 0: { weight1 = 2; weight2 = 3; weight3 = 4; break; }
+		case 1: { weight1 = 6; weight2 = 7; weight3 = 8; break; }
+		case 2: { weight1 = 9; weight2 = 11; weight3 = 12; break; }
+		case 3: { weight1 = 20; weight2 = 21; weight3 = 22; break; }
 		}
 		
 		PrintWriter writer = new PrintWriter(new FileOutputStream(location+".data"));
@@ -56,12 +61,14 @@ public class Sea {
 			int label = rand.getRandomInt(0, 2);		
 		    if(label == 1){
 		    	x1 = rand.getRandomFloat(0,rule);
-		    	x2 = rule - x1;
-		    	x3 = rand.getRandomFloat(0, 99);
+		    	double remain = rule - weight1*x1;
+		    	x2 = rand.getRandomFloat(0,remain);
+		    	remain = rule - weight2*x2 - weight1*x1;
+		    	x3 = remain / weight3;
 		    }	else{
-		    	x1 = rand.getRandomFloat(0,99);
-		    	x2 = rand.getRandomFloat(0, 99);
-		    	x3 = rand.getRandomFloat(0, 99);
+		    	x1 = rand.getRandomFloat(0,1);
+		    	x2 = rand.getRandomFloat(0,1);
+		    	x3 = rand.getRandomFloat(0,1);
 		    }
 		    line=line.append(format.format(x1)+seperator+format.format(x2)+seperator+format.format(x3)+seperator);
 		    writer.println(line.toString() + label);
@@ -85,8 +92,7 @@ public class Sea {
 	}	
 	
 	private void error_message(){
-		throw new UnsupportedOperationException("SEA concept can't overwrite existing file," +
+		throw new UnsupportedOperationException("Hyperplane concept can't overwrite existing file," +
 		"use setLocation method to define a new data file.");
 	}
-	
 }
