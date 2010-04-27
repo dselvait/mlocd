@@ -9,8 +9,8 @@ public class TestNaiveWeka {
 	String base = ".\\";
 	String dataset = "sta1.data";
 	String testset = "sta2.data";
-	String dataset2 = "sea1.data";
-	String testset2 = "sea2.data";
+	String dataset2 = "hyper1.data";
+	String testset2 = "hyper2.data";
 	
 	NaiveWeka classifier = new NaiveWeka();
 //	classifier.build(base+dataset);

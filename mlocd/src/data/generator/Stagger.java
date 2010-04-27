@@ -36,16 +36,15 @@ public class Stagger {
 		}
 		
 		int rule_index = seed++ % 3;
-		Color color=null; Shape shape=null; Size size=null;
 		Concept concept = null;
 		switch(rule_index){
-		case 0: { concept = new Concept(color=Color.RED,shape=null,size=Size.SMALL); 
+		case 0: { concept = new Concept(Color.RED,null,Size.SMALL); 
 		          concept.relation = 1; break;}
 		
-		case 1: { concept = new Concept(color=Color.GREEN,shape=Shape.CIRCLE,null); 
+		case 1: { concept = new Concept(Color.GREEN,Shape.CIRCLE,null); 
                    concept.relation = 0; break;}
 		
-		case 2: { concept = new Concept(color=Color.RED,shape=null,size=Size.MEDIUM); 
+		case 2: { concept = new Concept(Color.RED,null,Size.MEDIUM); 
         concept.relation = 0; break;}
 		}
 		
