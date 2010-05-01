@@ -44,6 +44,10 @@ public abstract class Classifier {
 	learner.renameTo(newfile);
   }
   
+  public void setLocation(String location){
+	  this.model = location;
+  }
+  
   /**
    * If the inherited class has speicial surfix name then the following two
    * methods: surfixName and getSurfixName need to be overwirte.
