@@ -43,4 +43,16 @@ public class FileWorker {
 	    throw new IllegalArgumentException("Delete: deletion failed");
   }
   
+  public static void combineFile(String[] filenames, String target)throws java.io.IOException{
+	  PrintWriter out=new PrintWriter(new FileOutputStream(target)); 
+	  for(String filename : filenames){
+	  BufferedReader in = new BufferedReader(new FileReader(filename));
+	  while(in.ready()){
+		  out.println(in.readLine());
+	  }
+	  in.close();
+	  }
+	  out.close();
+  }
+
 }
