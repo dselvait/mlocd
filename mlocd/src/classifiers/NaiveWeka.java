@@ -13,7 +13,7 @@ import weka.core.converters.C45Loader;
 public class NaiveWeka extends classifiers.Classifier{
 weka.classifiers.Classifier learner = null;
 	
-	public void setLoction(String location){
+	public void setLocation(String location){
 		this.model = location;
 	}
 	

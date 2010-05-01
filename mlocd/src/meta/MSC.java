@@ -40,9 +40,10 @@ public class MSC {
 	  String agent = this.location+"/"+"agent";
 	  learner.build(batches[0]);  // batches 0
 	  learners[0] = learner.copy();
+	  learners[0].setLocation(this.location);
 	  //rename the trained weak learner
-	  String newname = this.location+"/classifiers";
-	  rename(learners[0],newname);
+//	  String newname = this.location+"/classifiers";
+	  //rename(learners[0],newname);
 	  boolean[] evaluations=utils.Evaluation.testClassifier(learners[0],batches[1]); //batches[1]
 	  //Create hardset
 	  BufferedReader in = new BufferedReader(new FileReader(batches[1])); //batches[1]
@@ -63,22 +64,27 @@ public class MSC {
 	  out1.close(); out2.close();in.close();
 	  learner.build(hardset+".data");
 	  learners[1] = learner.copy();
+	  learners[1].setLocation(this.location);
 	  //newname = this.location+"/hardset";
 	  //rename(learners[1],newname);
 	  learner.build(agent+".data");
 	  learners[2] = learner.copy();
+	  learners[2].setLocation(this.location);
 	  //newname = this.location+"/agent";
 	  //rename(learners[2],newname);
 	  //learner.classifyData();
      }catch(Exception e){
 		e.printStackTrace();
-		cleanup();
+		//cleanup();
 		System.exit(1);
 	  }
 	}
 
    public String classifyInstance(String instance)throws Exception{	
-		String hypothesis="";  // The return value
+		if(learners[2] == null){
+			return learners[0].classifyInstance(instance);
+		}
+	   	String hypothesis="";  // The return value
 		String agentInstance=instance+",1";
 		String indicate = learners[2].classifyInstance(agentInstance);
 		Classifier selectedClassifier = indicate.equals("1")?learners[0]:learners[1];
@@ -86,7 +92,10 @@ public class MSC {
 	    return hypothesis;
 	  }
 	  
-   public String[] classifyData(String dataset)throws IOException{
+   public String[] classifyData(String dataset)throws Exception{
+	   if(learners[2] == null){
+			return learners[0].classifyData(dataset);
+		}
 	 String[] results = null;
 	 BufferedReader in = new BufferedReader(new FileReader(dataset)); 
 	 try{
@@ -153,8 +162,9 @@ public class MSC {
   private void makeC45NamesFile(String names, String newnames) throws Exception{
 	BufferedReader in = new BufferedReader(new FileReader(names));
 	PrintWriter out = new PrintWriter(new FileOutputStream(newnames));
-	out.println("0,1");
-	String endline = "claasAttribute: "+in.readLine()+".";
+	out.println("0,1.");
+	String endline = in.readLine();
+	endline = "class_attribute:"+ (endline.endsWith(".")?endline:endline+".");
 	String line = null;
 	while((line = in.readLine()) != null){
 	  out.println(line);	

@@ -25,7 +25,9 @@ public class Stagger {
 		this.location = location.split("\\.")[0];
 	}
 	
-	public void setLocation(String location){ this.location = location;}
+	public void setLocation(String location){ 
+		this.location = location.split("\\.")[0];
+	}
 	
 	public void reset(){seed = 0;}
 	
