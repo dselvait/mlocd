@@ -11,17 +11,22 @@ import weka.core.Instances;
 import weka.core.converters.C45Loader;
 
 public class NaiveWeka extends classifiers.Classifier{
-weka.classifiers.Classifier learner = null;
-	
+	weka.classifiers.Classifier learner = null;
+	String info = null; 
+//	String location = null;
+
 	public void setLocation(String location){
 		this.model = location;
 	}
 	
 	public void build(String filename) throws Exception {
 
-		if(this.model == null)
-			this.model = filename.split("\\.")[0];
-
+		String basename = filename.split("\\.")[0];
+		if(this.model == null){
+			this.model = basename;
+		}
+		info = this.model+".info";
+		FileWorker.cp(basename+".names",info);
 		File file = new File(filename);
 		C45Loader loader = new C45Loader();
 		loader.setSource(file);
@@ -52,7 +57,7 @@ weka.classifiers.Classifier learner = null;
 				+ ".data"));
 		out.println(instance);
 		out.close();
-		FileWorker.cp(this.model + ".names", tmpdata + ".names");
+		FileWorker.cp(info, tmpdata + ".names");
 	    file = new File(tmpdata);
 		C45Loader loader = new C45Loader();
 		loader.setSource(file);
@@ -86,6 +91,7 @@ weka.classifiers.Classifier learner = null;
 	public NaiveWeka copy(){
 		NaiveWeka copy = new NaiveWeka();
 		copy.learner = this.learner;
+		copy.info = this.info;
 		copy.model = this.model;
 		return copy;
 	}

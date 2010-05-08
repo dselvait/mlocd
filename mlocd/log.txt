@@ -6,3 +6,5 @@
 
 3. The preprocessor.AttributeSelection in this projects recommands attribute
 index from 1.
+
+4 The filework.remove is not working in MSC.
