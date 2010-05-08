@@ -39,8 +39,8 @@ public class FileWorker {
 
 	 boolean success = target.delete();
 
-	 if (!success)
-	    throw new IllegalArgumentException("Delete: deletion failed");
+//	 if (!success)
+//	    throw new IllegalArgumentException("Delete: deletion failed");
   }
   
   public static void combineFile(String[] filenames, String target)throws java.io.IOException{
