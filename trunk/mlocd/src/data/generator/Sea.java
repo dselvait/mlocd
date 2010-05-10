@@ -32,6 +32,8 @@ public class Sea {
 	
 	public void reset(){seed = 0;}
 	
+	public void setSeed(int seed){ this.seed = seed;}
+	
 	public void generateData(int instancesNum) throws java.io.IOException{
 		
 		if(new File(location+".data").exists()){
