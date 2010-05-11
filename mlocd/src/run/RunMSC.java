@@ -13,7 +13,7 @@ public class RunMSC {
 		String base = System.getProperty("user.dir")+"\\lab\\";
 		String stadata = "sea";
 		Sea sea = new Sea(base+stadata);
-		String[] datasets = new String[4]; // Change the batch number
+		String[] datasets = new String[10]; // Change the batch number
 		
 		for(int i = 0; i < datasets.length; ++i){
 			String dataset = base + stadata + i +".data";
@@ -24,21 +24,19 @@ public class RunMSC {
 		}
 		
 		String testset = base+"seatest.data";
-		Testset.make(datasets, testset, 600);
-//		// Need to manully copy the names file
-//		String jdata = base+"jtest.data";
+		Testset.make(datasets, testset, 300);
+		// Need to manully copy the names file
 //		String[] oldsets = new String[datasets.length-1];
 //		System.arraycopy(datasets, 0, oldsets, 0, datasets.length-1);
+//		String jdata = base+"jtest.data";
 //		FileWorker.combineFile(datasets, jdata);
-//		
-//		
-		NaiveWeka learner = new NaiveWeka();
+//		NaiveWeka learner = new NaiveWeka();
 //		learner.build(jdata);
 //		String[] labels = learner.classifyData(testset);
 //		double accuracy = Evaluation.accuracy(testset, labels);
-//		System.out.println("The accuracy of msc is "+accuracy);
+//		System.out.println("The accuracy of naive method is "+accuracy);
 		
-		
+		NaiveWeka learner = new NaiveWeka();
 		MSC classifier = new MSC(learner);
 		classifier.setLocation(base+"sea");
 		classifier.build(datasets);
