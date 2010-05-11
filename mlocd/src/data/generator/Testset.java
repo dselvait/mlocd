@@ -9,7 +9,7 @@ import utils.RandomMachine;
 public class Testset {
 
 	public static void make(String[] datasets, String testset, int instances)throws Exception{
-		int part1 = instances / 10 * 7;
+		int part1 = instances / 10 * 5;
 		int part2 = (instances - part1) / (datasets.length-1);
 		RandomMachine rand = new RandomMachine();
 		
