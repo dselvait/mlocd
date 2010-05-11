@@ -48,11 +48,11 @@ public class NaiveWeka extends classifiers.Classifier{
 		File file = null;
 		String label = null;
 		String tmpdata = null;
-		int i = 1;
-		do {
-			tmpdata = this.model + "naiveTmp" + Integer.toString(i++);
-			file = new File(tmpdata + ".data");
-		} while (file.exists());
+//		int i = 1;
+//		do {
+			tmpdata = this.model + "naiveTmp";
+//			file = new File(tmpdata + ".data");
+//		} while (file.exists());
 		PrintWriter out = new PrintWriter(new FileOutputStream(tmpdata
 				+ ".data"));
 		out.println(instance);
