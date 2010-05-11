@@ -40,14 +40,15 @@ public class Sea {
 			error_message();
 		}
 		
-		int rule_index = seed++ % 4;
+		int rule_index = seed++ % 5;
 		double rule = 0.0;
 		
 		switch(rule_index){
-		case 0: { rule = 8; break; }
-		case 1: { rule = 20; break; }
-		case 2: { rule = 30; break; }
-		case 3: { rule = 38;break; }
+		case 0: { rule = 8;  break; }
+		case 1: { rule = 28; break; }
+		case 2: { rule = 48; break; }
+		case 3: { rule = 58; break; }
+		case 4: { rule = 78; break; }
 		}
 		
 		PrintWriter writer = new PrintWriter(new FileOutputStream(location+".data"));
