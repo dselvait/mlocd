@@ -105,9 +105,9 @@ public class MSC extends Classifier {
 					learners[2] = getInstance();
 					learners[2].setLocation(baseLearner + "agent");
 					learners[2].build(agent + ".data");
-					learners[1] = getInstance();
-					learners[1].setLocation(baseLearner + "hardset");
-					learners[1].build(hardset + ".data");
+//					learners[1] = getInstance();
+//					learners[1].setLocation(baseLearner + "hardset");
+//					learners[1].build(hardset + ".data");
 				}
 			}
 		} catch (Exception e) {
