@@ -39,9 +39,9 @@ public class Hyperplane {
 	
 	public void generateData(int instancesNum) throws java.io.IOException{
 		
-		if(new File(location+".data").exists()){
-			error_message();
-		}
+//		if(new File(location+".data").exists()){
+//			error_message();
+//		}
 		
 		int rule_index = seed++ % 4;
 		double rule = 1;
@@ -51,6 +51,7 @@ public class Hyperplane {
 		case 1: { weight1 = 6; weight2 = 7; weight3 = 8; break; }
 		case 2: { weight1 = 9; weight2 = 11; weight3 = 12; break; }
 		case 3: { weight1 = 20; weight2 = 21; weight3 = 22; break; }
+		case 4: { weight1 = 30; weight2 = 30; weight3 = 30; break; }
 		}
 		
 		PrintWriter writer = new PrintWriter(new FileOutputStream(location+".data"));
@@ -81,9 +82,9 @@ public class Hyperplane {
 
 	public void makeNamesFile() throws java.io.IOException {
 		
-		if(new File(location+".names").exists()){
-			error_message();
-		}
+//		if(new File(location+".names").exists()){
+//			error_message();
+//		}
 		
 		PrintWriter writer = new PrintWriter(new FileOutputStream(location+".names"));
 		writer.println(positive_label+","+nagative_label +".");

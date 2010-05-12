@@ -33,9 +33,9 @@ public class Stagger {
 	
 	public void generateData(int instancesNum) throws java.io.IOException{
 		
-		if(new File(location+".data").exists()){
-			error_message();
-		}
+//		if(new File(location+".data").exists()){
+//			error_message();
+//		}
 		
 		int rule_index = seed++ % 3;
 		Concept concept = null;
@@ -48,8 +48,14 @@ public class Stagger {
 		
 		case 2: { concept = new Concept(Color.RED,null,Size.MEDIUM); 
         concept.relation = 0; break;}
-		}
 		
+		case 3: { concept = new Concept(Color.BLUE,null,Size.MEDIUM); 
+		concept.relation = 0; break;}
+		
+      	case 4: { concept = new Concept(Color.RED,Shape.RECTANGLE,Size.MEDIUM); 
+      	concept.relation = 0; break;}
+		}
+
 		PrintWriter writer = new PrintWriter(new FileOutputStream(location+".data"));
 		RandomMachine rand = new RandomMachine();
 		Color[] allColor = Color.values();
@@ -113,9 +119,9 @@ public class Stagger {
 	
 	public void makeNamesFile() throws java.io.IOException {
 		
-		if(new File(location+".names").exists()){
-			error_message();
-		}
+//		if(new File(location+".names").exists()){
+//			error_message();
+//		}
 		
 		PrintWriter writer = new PrintWriter(new FileOutputStream(location+".names"));
 		writer.println(positive_label+","+nagative_label +".");

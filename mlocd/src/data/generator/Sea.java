@@ -36,9 +36,9 @@ public class Sea {
 	
 	public void generateData(int instancesNum) throws java.io.IOException{
 		
-		if(new File(location+".data").exists()){
-			error_message();
-		}
+//		if(new File(location+".data").exists()){
+//			error_message();
+//		}
 		
 		int rule_index = seed++ % 5;
 		double rule = 0.0;
@@ -77,9 +77,9 @@ public class Sea {
 
 	public void makeNamesFile() throws java.io.IOException {
 		
-		if(new File(location+".names").exists()){
-			error_message();
-		}
+//		if(new File(location+".names").exists()){
+//			error_message();
+//		}
 		
 		PrintWriter writer = new PrintWriter(new FileOutputStream(location+".names"));
 		writer.println(positive_label+","+nagative_label +".");
