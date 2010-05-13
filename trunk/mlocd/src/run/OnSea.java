@@ -1,6 +1,7 @@
 package run;
 import meta.MSC;
-import meta.Boosting;
+import meta.DMW;
+import meta.SEAlearner;
 import classifiers.NaiveWeka;
 import utils.Evaluation;
 import utils.FileWorker;
@@ -17,7 +18,7 @@ public class OnSea {
 		
 		String stadata = "sea";
 		Sea sea = new Sea(base+stadata);
-		String[] datasets = new String[5]; // Change the batch number
+		String[] datasets = new String[10]; // Change the batch number
 		
 		for(int i = 0; i < datasets.length; ++i){
 			String dataset = base + stadata + i +".data";
@@ -30,9 +31,10 @@ public class OnSea {
 		String testset = base+"seatest.data";
 		Testset.make(datasets, testset, 300);
 
-		runMsc(datasets,testset);
+//		runMsc(datasets,testset);
 //		runNaive(datasets, testset);
-//		runBoosting(datasets,testset);
+//		runDMW(datasets, testset);
+		runSEAlearner(datasets, testset);
 		System.out.println("System End");
 	}
 	
@@ -64,9 +66,21 @@ public class OnSea {
 		System.out.println("The error rate of naive is "+errorRate);
 	}
 	
-	public static void runBoosting(String[] datasets, String testset)throws Exception{
+	public static void runDMW(String[] datasets, String testset)throws Exception{
 		NaiveWeka learner = new NaiveWeka();
-		Boosting classifier = new Boosting(learner);
+		DMW classifier = new DMW(learner);
+		classifier.setLocation(base+"sea");
+		classifier.build(datasets);
+		String[] labels = classifier.classifyData(testset);
+//		double accuracy = Evaluation.accuracy(testset, labels);
+//		System.out.println("The accuracy of msc is "+accuracy);
+		double errorRate = Evaluation.errorRate(testset, labels);
+		System.out.println("The error rate of Boosting is "+errorRate);
+	}
+	
+	public static void runSEAlearner(String[] datasets, String testset)throws Exception{
+		NaiveWeka learner = new NaiveWeka();
+		SEAlearner classifier = new SEAlearner(learner);
 		classifier.setLocation(base+"sea");
 		classifier.build(datasets);
 		String[] labels = classifier.classifyData(testset);

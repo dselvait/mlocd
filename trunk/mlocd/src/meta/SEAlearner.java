@@ -74,40 +74,31 @@ public class SEAlearner extends Classifier {
 				Iterator<Map.Entry<Classifier, Double>> i = classifierMap
 						.entrySet().iterator();
 				double min = Double.MAX_VALUE;
+				Classifier outdate = null;
 				while (i.hasNext()) {
 					Map.Entry<Classifier, Double> me = (Map.Entry<Classifier, Double>) i
 							.next();
 					Classifier blearner = me.getKey();
-					Double value = me.getValue();
-					if (value < min) {
-						min = value;
-					}
 					boolean[] eval = utils.Evaluation.testClassifier(blearner,
 							dataset);
 					double weight = updateClassifierWeight(eval);
 					classifierMap.put(blearner, weight);
-				}
-				Classifier learner = getInstance();
-				learner.build(dataset);
-				boolean[] evaluations = utils.Evaluation.testClassifier(
-						learner, dataset);
-				double cweight = updateClassifierWeight(evaluations);
-				if (cweight > min) {
-					classifierMap.put(learner, cweight);
-					// Remove the classifiers give low performance
-					i = classifierMap.entrySet().iterator();
-					while (i.hasNext()) {
-						Map.Entry<Classifier, Double> me = (Map.Entry<Classifier, Double>) i
-								.next();
-						Classifier outdate = me.getKey();
-						Double value = me.getValue();
-						if (value == min) {
-							min = value;
-							classifierMap.remove(outdate);
-						}
+					if( weight < min ) {
+						min = weight;
+						outdate = blearner;
 					}
 				}
-			}
+					// Remove the classifiers give low performance
+					if (classifierMap.size() > 3 && min < 0.20) {
+								classifierMap.remove(outdate);
+					}
+					Classifier learner = getInstance();
+					learner.build(dataset);
+					boolean[] evaluations = utils.Evaluation.testClassifier(
+							learner, dataset);
+					double cweight = updateClassifierWeight(evaluations);
+					classifierMap.put(learner, cweight);
+				}
 		} catch (Exception e) {
 			cleanup();
 			throw e;
@@ -315,18 +306,18 @@ public class SEAlearner extends Classifier {
 	// }
 
 	private void cleanup() {
-		try {
-			File dir = new File(this.location);
-			for (File f : dir.listFiles())
-				f.delete();
-			dir.delete();
-			System.out.println("The Boosting environment has been cleaned up.");
-		} catch (Exception e) {
-			System.err
-					.println("Fail to clean up the Boosting classifier environment.");
-			e.printStackTrace();
-			// System.exit(1);
-		}
+//		try {
+//			File dir = new File(this.location);
+//			for (File f : dir.listFiles())
+//				f.delete();
+//			dir.delete();
+//			System.out.println("The Boosting environment has been cleaned up.");
+//		} catch (Exception e) {
+//			System.err
+//					.println("Fail to clean up the Boosting classifier environment.");
+//			e.printStackTrace();
+//			// System.exit(1);
+//		}
 	}
 
 }
