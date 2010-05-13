@@ -1,5 +1,7 @@
 package run;
+import meta.DMW;
 import meta.MSC;
+import meta.SEAlearner;
 import classifiers.NaiveWeka;
 import utils.Evaluation;
 import utils.FileWorker;
@@ -8,6 +10,8 @@ import data.generator.Stagger;
 import data.generator.Testset;
 
 public class OnStagger {
+	
+	public static String base = System.getProperty("user.dir")+"\\lab\\";
 	
 	public static void main(String[] args)throws Exception{
 		String base = System.getProperty("user.dir")+"\\lab\\";
@@ -25,28 +29,34 @@ public class OnStagger {
 		
 		String testset = base+"statest.data";
 		Testset.make(datasets, testset, 300);
-		// Need to manully copy the names file
-//		String[] oldsets = new String[datasets.length-1];
-//		System.arraycopy(datasets, 0, oldsets, 0, datasets.length-1);
-//		String jdata = base+"jsta.data";
-//		FileWorker.combineFile(datasets, jdata);
+	
+		runDMW(datasets, testset);
+		runSEAlearner(datasets, testset);
+	}
+	
+	public static void runDMW(String[] datasets, String testset)throws Exception{
 		NaiveWeka learner = new NaiveWeka();
-		learner.build(datasets[0]);
-		String[] labels = learner.classifyData(testset);
-		double errorRate = Evaluation.errorRate(testset, labels);
-		System.out.println("The error rate of naive method is "+errorRate);
-//		double accuracy = Evaluation.accuracy(testset, labels);
-//		System.out.println("The accuracy of naive method is "+accuracy);
-		
-//		NaiveWeka learner = new NaiveWeka();
-//		MSC classifier = new MSC(learner);
-//		classifier.setLocation(base+"sta");
-//		classifier.build(datasets);
-//		
-//		String[] labels = classifier.classifyData(testset);
+		DMW classifier = new DMW(learner);
+		classifier.setLocation(base+"sea");
+		classifier.build(datasets);
+		String[] labels = classifier.classifyData(testset);
 //		double accuracy = Evaluation.accuracy(testset, labels);
 //		System.out.println("The accuracy of msc is "+accuracy);
-		System.out.println("System End");
+		double errorRate = Evaluation.errorRate(testset, labels);
+		System.out.println("The error rate of DMW is "+errorRate);
 	}
+	
+	public static void runSEAlearner(String[] datasets, String testset)throws Exception{
+		NaiveWeka learner = new NaiveWeka();
+		SEAlearner classifier = new SEAlearner(learner);
+		classifier.setLocation(base+"sea");
+		classifier.build(datasets);
+		String[] labels = classifier.classifyData(testset);
+//		double accuracy = Evaluation.accuracy(testset, labels);
+//		System.out.println("The accuracy of msc is "+accuracy);
+		double errorRate = Evaluation.errorRate(testset, labels);
+		System.out.println("The error rate of SEAlearner is "+errorRate);
+	}
+	
 	
 }
