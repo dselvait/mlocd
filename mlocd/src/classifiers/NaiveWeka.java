@@ -95,4 +95,5 @@ public class NaiveWeka extends classifiers.Classifier{
 		copy.model = this.model;
 		return copy;
 	}
+	
 }

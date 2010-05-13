@@ -75,6 +75,7 @@ public class MSC extends Classifier {
 				double jacob = utils.Evaluation.jacobCoeffcient(eval1, eval2);
 				//System.out.println("The jcob coefficience is "+ jacob);
 				if (jacob >= standard) {
+					System.out.println("No new classifier is generated");
 					continue;
 				} else {
 					if (learners[2] != null) {
