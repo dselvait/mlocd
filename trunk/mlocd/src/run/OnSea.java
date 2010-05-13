@@ -17,7 +17,7 @@ public class OnSea {
 		
 		String stadata = "sea";
 		Sea sea = new Sea(base+stadata);
-		String[] datasets = new String[4]; // Change the batch number
+		String[] datasets = new String[5]; // Change the batch number
 		
 		for(int i = 0; i < datasets.length; ++i){
 			String dataset = base + stadata + i +".data";
@@ -30,9 +30,9 @@ public class OnSea {
 		String testset = base+"seatest.data";
 		Testset.make(datasets, testset, 300);
 
-//		runMsc(datasets,testset);
+		runMsc(datasets,testset);
 //		runNaive(datasets, testset);
-		runBoosting(datasets,testset);
+//		runBoosting(datasets,testset);
 		System.out.println("System End");
 	}
 	
