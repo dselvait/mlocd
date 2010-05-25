@@ -33,7 +33,7 @@ public class OnSea {
 
 //		runMsc(datasets,testset);
 //		runNaive(datasets, testset);
-//		runDMW(datasets, testset);
+		runDMW(datasets, testset);
 		runSEAlearner(datasets, testset);
 		System.out.println("System End");
 	}
@@ -75,7 +75,7 @@ public class OnSea {
 //		double accuracy = Evaluation.accuracy(testset, labels);
 //		System.out.println("The accuracy of msc is "+accuracy);
 		double errorRate = Evaluation.errorRate(testset, labels);
-		System.out.println("The error rate of Boosting is "+errorRate);
+		System.out.println("The error rate of DWM is "+errorRate);
 	}
 	
 	public static void runSEAlearner(String[] datasets, String testset)throws Exception{
@@ -87,7 +87,7 @@ public class OnSea {
 //		double accuracy = Evaluation.accuracy(testset, labels);
 //		System.out.println("The accuracy of msc is "+accuracy);
 		double errorRate = Evaluation.errorRate(testset, labels);
-		System.out.println("The error rate of Boosting is "+errorRate);
+		System.out.println("The error rate of SEA Learner is "+errorRate);
 	}
 	
 }
