@@ -2,7 +2,7 @@ package data.preprocessor;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-import base.*;
+import core.*;
 
 public class DigitalReader {
 
