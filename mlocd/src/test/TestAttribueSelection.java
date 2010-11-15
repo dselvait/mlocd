@@ -1,5 +1,5 @@
 package test;
-import data.preprocessor.AttributeSelection;
+import preprocessor.AttributeSelection;
 
 public class TestAttribueSelection {
 
