@@ -6,8 +6,9 @@ import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.Random;
 
+import preprocessor.DataWorker;
+
 import data.generator.DataGenerator;
-import data.preprocessor.DataWorker;
 
 public class ConceptDriftData {
 
