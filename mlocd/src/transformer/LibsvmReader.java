@@ -7,8 +7,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import base.Attribute;
-import base.C45Reader;
+import core.*;
 
 public class LibsvmReader {
 
