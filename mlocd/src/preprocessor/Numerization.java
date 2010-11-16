@@ -6,7 +6,7 @@ import java.io.FileReader;
 
 import core.*;
 
-public class DigitalReader {
+public class Numerization {
 
 	/**
 	 * The method read in the c45 file and get the categorical values and change them 

@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.Random;
 
-import preprocessor.DataWorker;
+import utils.text.DataWorker;
 
 import data.generator.DataGenerator;
 
