@@ -1,10 +1,11 @@
 package classifiers;
 
+import io.FileWorker;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 
-import utils.FileWorker;
 import weka.classifiers.bayes.*;
 import weka.core.Attribute;
 import weka.core.Instances;

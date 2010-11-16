@@ -1,10 +1,11 @@
 package classifiers.meta;
 
+import io.FileWorker;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import utils.FileWorker;
 import utils.Utils;
 import classifiers.Classifier;
 import java.io.IOException;
