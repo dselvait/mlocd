@@ -1,9 +1,10 @@
 package data.generator;
+import io.FileWorker;
+
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.io.FileReader;
 import java.io.BufferedReader;
-import utils.FileWorker;
 import utils.RandomMachine;
 
 public class Testset {
