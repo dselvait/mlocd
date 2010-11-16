@@ -1,8 +1,8 @@
 package run;
-import meta.MSC;
-import meta.DMW;
-import meta.SEAlearner;
 import classifiers.NaiveWeka;
+import classifiers.meta.DMW;
+import classifiers.meta.MSC;
+import classifiers.meta.SEAlearner;
 import utils.Evaluation;
 import utils.FileWorker;
 
