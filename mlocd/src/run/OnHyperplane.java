@@ -1,10 +1,10 @@
 package run;
+import io.FileWorker;
 import classifiers.NaiveWeka;
 import classifiers.meta.DMW;
 import classifiers.meta.MSC;
 import classifiers.meta.SEAlearner;
 import utils.Evaluation;
-import utils.FileWorker;
 import data.generator.Hyperplane;
 import data.generator.Stagger;
 import data.generator.Testset;

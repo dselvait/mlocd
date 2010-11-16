@@ -2,6 +2,8 @@ package classifiers.meta;
 
 import classifiers.*;
 
+import io.FileWorker;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Iterator;

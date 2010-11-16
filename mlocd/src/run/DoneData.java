@@ -1,6 +1,7 @@
 package run;
 //import io.*;
 //import classifiers.*;
+import io.FileWorker;
 import utils.*;
 
 public class DoneData {
@@ -24,7 +25,7 @@ public class DoneData {
 		
 		 for(int i = 1; i < 6 ; ++i){
 			 String newset2 = dataset.split("\\.")[0] + i;
-			 utils.FileWorker.cp(c45_db+newset, c45_db+newset2+".data");
+			 io.FileWorker.cp(c45_db+newset, c45_db+newset2+".data");
 			 FileWorker.cp(base+names,c45_db+newset2+".names");
 		 }
 		 

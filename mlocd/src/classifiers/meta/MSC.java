@@ -1,5 +1,7 @@
 package classifiers.meta;
 
+import io.FileWorker;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,7 +9,6 @@ import java.io.FileReader;
 import java.io.PrintWriter;
 import java.io.FileOutputStream;
 import utils.Utils;
-import utils.FileWorker;
 import classifiers.*;
 import java.io.IOException;
 
