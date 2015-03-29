@@ -1,0 +1,3 @@
+The full name on the current project mlocd is Meta Learning on Concept Drift, this project aims to create a framework for supervised learning processing data with concept drift. The entire project consists of two parts;
+1 The first part is a data generator. It geneartes synthetic data to simulate the envionment that the underlying concepts in data evolve with time.
+2 The other part is the implementation of algorithm that trains meta classifiers on data with concept drifts.
